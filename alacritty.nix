@@ -5,10 +5,10 @@
     settings = {
       font = {
         size = 16;
-        normal = { family = "ZedMono Nerd Font"; style = "Regular"; };
-        bold = { family = "ZedMono Nerd Font"; style = "Bold"; };
-        italic = { family = "ZedMono Nerd Font"; style = "Italic"; };
-        bold_italic = { family = "ZedMono Nerd Font"; style = "Bold Italic"; };
+        normal = { family = "JetBrainsMono Nerd Font"; style = "Regular"; };
+        bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
+        italic = { family = "JetBrainsMono Nerd Font"; style = "Italic"; };
+        bold_italic = { family = "JetBrainsMono Nerd Font"; style = "Bold Italic"; };
       };
       terminal = { shell = "${pkgs.nushell}/bin/nu"; };
       env = {

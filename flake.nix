@@ -27,6 +27,7 @@
         users.users.dao = {
           name = "dao";
           home = "/Users/dao";
+          uid = 501;
         };
 
         nixpkgs.overlays = [ rust-overlay.overlays.default ];
@@ -38,6 +39,7 @@
 
         fonts.packages = [
           pkgs.nerd-fonts.zed-mono
+          pkgs.nerd-fonts.jetbrains-mono
         ];
 
         homebrew = {
@@ -47,6 +49,9 @@
             autoUpdate = true;
             upgrade = true;
           };
+          casks = [
+            "blender"
+          ];
           masApps = { };
         };
 
