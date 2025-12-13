@@ -13,13 +13,9 @@
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager, rust-overlay }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
     let
       configuration = { pkgs, ... }: {
         system.primaryUser = "dao";
@@ -29,8 +25,6 @@
           home = "/Users/dao";
           uid = 501;
         };
-
-        nixpkgs.overlays = [ rust-overlay.overlays.default ];
 
         environment.systemPackages =
           [
@@ -55,7 +49,7 @@
           masApps = { };
         };
 
-        nix.settings.experimental-features = "nix-command flakes";
+        nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
         system.defaults = { };
 
