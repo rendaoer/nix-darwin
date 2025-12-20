@@ -28,7 +28,6 @@
 
         environment.systemPackages =
           [
-            pkgs.alacritty
           ];
 
         fonts.packages = [
@@ -61,7 +60,7 @@
       };
     in
     {
-      darwinConfigurations."Mac-Studao" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."Mac-Studio" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew

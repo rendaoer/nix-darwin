@@ -22,7 +22,7 @@
         };
 
         lsp.display-progress-messages = true;
-        # lsp.display-inlay-hints = true;
+        lsp.display-inlay-hints = true;
 
         auto-save.focus-lost = true;
 
