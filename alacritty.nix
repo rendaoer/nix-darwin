@@ -1,19 +1,10 @@
-{ pkgs, ... }:
+{ ... }:
+
 {
   programs.alacritty = {
     enable = true;
-    settings = {
-      font = {
-        size = 16;
-        normal = { family = "JetBrainsMono Nerd Font"; style = "Regular"; };
-        bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
-        italic = { family = "JetBrainsMono Nerd Font"; style = "Italic"; };
-        bold_italic = { family = "JetBrainsMono Nerd Font"; style = "Bold Italic"; };
-      };
-      terminal = { shell = "${pkgs.nushell}/bin/nu"; };
-      env = {
-        TERM = "xterm-256color";
-      };
-    };
   };
+
+  # 将本地的 toml 文件映射到标准路径
+  xdg.configFile."alacritty/alacritty.toml".source = ./alacritty/alacritty.toml;
 }

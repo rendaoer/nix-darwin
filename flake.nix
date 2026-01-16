@@ -44,6 +44,7 @@
           };
           casks = [
             "blender"
+            "steam"
           ];
           masApps = { };
         };
