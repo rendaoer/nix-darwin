@@ -1,0 +1,10 @@
+[user]
+name = "RenDaoEr"
+email = "rendaoer@outlook.com"
+
+[ui]
+# 独立化后，我们直接使用命令名，依赖 PATH 查找
+editor = "hx"
+
+[snapshot]
+max-new-file-size = "20MiB"

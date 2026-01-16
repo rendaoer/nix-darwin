@@ -13,13 +13,9 @@
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager, rust-overlay }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
     let
       configuration = { pkgs, ... }: {
         system.primaryUser = "dao";
@@ -27,17 +23,16 @@
         users.users.dao = {
           name = "dao";
           home = "/Users/dao";
+          uid = 501;
         };
-
-        nixpkgs.overlays = [ rust-overlay.overlays.default ];
 
         environment.systemPackages =
           [
-            pkgs.alacritty
           ];
 
         fonts.packages = [
           pkgs.nerd-fonts.zed-mono
+          pkgs.nerd-fonts.jetbrains-mono
         ];
 
         homebrew = {
@@ -47,10 +42,14 @@
             autoUpdate = true;
             upgrade = true;
           };
+          casks = [
+            "blender"
+            "steam"
+          ];
           masApps = { };
         };
 
-        nix.settings.experimental-features = "nix-command flakes";
+        nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
         system.defaults = { };
 
@@ -62,7 +61,7 @@
       };
     in
     {
-      darwinConfigurations."Mac-Studao" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."Mac-Studio" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew

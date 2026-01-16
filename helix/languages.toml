@@ -1,0 +1,44 @@
+# [[language]] 定义
+[[language]]
+name = "svelte"
+language-servers = [ "svelteserver", "tailwindcss" ]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [ "vtsls", "biome" ]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [ "vtsls", "biome", "tailwindcss" ]
+auto-format = true
+
+[[language]]
+name = "nix"
+auto-format = true
+formatter = { command = "nixpkgs-fmt" }
+
+# [language-server] 定义
+[language-server.svelteserver]
+command = "svelte-language-server"
+args = ["--stdio"]
+config = { typescript = { enable = true } }
+
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+[language-server.vtsls]
+command = "vtsls"
+args = ["--stdio"]
+
+[language-server.tailwindcss]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+targetDir = true
+imports.granularity.group = "module"
+imports.granularity.enforce = true

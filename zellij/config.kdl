@@ -1,0 +1,6 @@
+// Zellij 基础配置
+simplified_ui true
+default_mode "normal"
+default_shell "nu"
+default_layout "compact"
+pane_frames false

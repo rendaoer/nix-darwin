@@ -1,27 +1,5 @@
 { pkgs, ... }:
 {
-  home.stateVersion = "25.05";
-  home.packages = with pkgs; [
-    helix
-    nushell
-    jujutsu
-    starship
-    zellij
-    gemini-cli
-    nodejs
-    pnpm
-    vtsls
-    tailwindcss-language-server
-    biome
-    nil
-    nixpkgs-fmt
-    (rust-bin.stable.latest.default.override
-      {
-        extensions = [ "rust-src" "rust-analyzer" ];
-      }
-    )
-  ];
-
   imports = [
     ./alacritty.nix
     ./nushell.nix
@@ -29,4 +7,17 @@
     ./helix.nix
     ./jujutsu.nix
   ];
+
+  home.stateVersion = "25.11";
+  home.packages = with pkgs; [
+    gemini-cli
+    tombi
+    nil
+    nixpkgs-fmt
+  ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
